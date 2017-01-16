@@ -22,20 +22,21 @@
         border: 1px solid #E0E4E8;
         background: #f3f5f9;
     }
-
     /*分组的标题*/
+    
     .target-group-title {
         font-size: 16px;
         line-height: 40px;
         background: #4FBEF5;
         color: #fff;
-        padding:5px 15px;
+        padding: 5px 15px;
     }
     
     .target-group-item {
         min-height: 200px;
     }
     /*分组内容*/
+    
     .target-group-item li {
         font-size: 14px;
         line-height: 26px;
@@ -46,14 +47,14 @@
         color: #555555;
         cursor: move;
     }
-
-    .target-group-item .ui-icon-arrowrefresh-1-w{
-        float:right;
+    
+    .target-group-item .ui-icon-arrowrefresh-1-w {
+        float: right;
         margin: 5px;
         cursor: pointer;
     }
-
     /*待分组容器*/
+    
     .drag-wrap {
         position: absolute;
         /* top: 20px; */
@@ -66,17 +67,18 @@
         background: #f3f5f9;
     }
     /*待分组标题*/
+    
     .drag-title {
         font-size: 16px;
         line-height: 40px;
         background: #f5b34f;
         color: #fff;
-        padding:5px 15px;
+        padding: 5px 15px;
     }
     /*待分组项*/
     
     .drag-item {
-         font-size: 14px;
+        font-size: 14px;
         line-height: 26px;
         padding: 1px 0 4px 2px;
         border: 1px solid #d3d3d3;
@@ -84,9 +86,14 @@
         background: #ddd;
         color: #555555;
     }
-
-    .ui-state-highlight { min-height: 20px;}
-    .ui-state-highlight2{background: #c5c5c5;}
+    
+    .ui-state-highlight {
+        min-height: 20px;
+    }
+    
+    .ui-state-highlight2 {
+        background: #c5c5c5;
+    }
     </style>
 </head>
 
@@ -113,7 +120,7 @@
                     <li class="ui-state-default">Item 10 <span class="ui-icon ui-icon-arrowrefresh-1-w" title="重排"></span></li>
                 </ul>
             </div>
-             <div class="target-group sort-disabled drag-wrap">
+            <div class="target-group sort-disabled drag-wrap">
                 <div class="target-group-title drag-title">待分组</div>
                 <ul id="dragsource" class="target-group-item group-item-disabled">
                     <li class="ui-state-default">Item 11 </li>
@@ -124,7 +131,7 @@
                 </ul>
             </div>
         </div>
-       <!--  <div id="dragsource" class="drag-wrap">
+        <!--  <div id="dragsource" class="drag-wrap">
             <div class="drag-title">待分组</div>
             <div class="drag-item">Item 11</div>
             <div class="drag-item">Item 12</div>
@@ -132,46 +139,45 @@
             <div class="drag-item">Item 14</div>
         </div> -->
     </div>
-
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="jquery-ui.min.js"></script>
     <script>
     /*//待排的对象
-    $("#dragsource > .drag-item").draggable({
-        opacity: 0.7,
-        cursor: "move",
-        helper: 'clone',
-        revert: "invalid",
-        snapMode: 'outer', //吸附到对齐
-        snap: '.ui-state-highlight' //吸附到
-    });
-    
-    //可接受拖动
-    $(".target-group ul").droppable({
-        accept: "#dragsource > .drag-item",
-        hoverClass: "ui-state-highlight2",
-        over: function(event, ui) {
-            //$(this).html("Oh, Yeah!");
-        },
-        out: function(event, ui) {
-            //$(this).html("Don't leave me!");
-        },
-        drop: function(event, ui) {
-            accept(ui.draggable, $(this));
-        }
-    });
+            $("#dragsource > .drag-item").draggable({
+                opacity: 0.7,
+                cursor: "move",
+                helper: 'clone',
+                revert: "invalid",
+                snapMode: 'outer', //吸附到对齐
+                snap: '.ui-state-highlight' //吸附到
+            });
+            
+            //可接受拖动
+            $(".target-group ul").droppable({
+                accept: "#dragsource > .drag-item",
+                hoverClass: "ui-state-highlight2",
+                over: function(event, ui) {
+                    //$(this).html("Oh, Yeah!");
+                },
+                out: function(event, ui) {
+                    //$(this).html("Don't leave me!");
+                },
+                drop: function(event, ui) {
+                    accept(ui.draggable, $(this));
+                }
+            });
 
-    //拖动完成
-    function accept(source, target) {
-        target.append('<li class="ui-state-default">' + source.text() + ' <span class="ui-icon ui-icon-arrowrefresh-1-w" title="重排"></span></li>');
-        source.remove();
-    }*/
-   
+            //拖动完成
+            function accept(source, target) {
+                target.append('<li class="ui-state-default">' + source.text() + ' <span class="ui-icon ui-icon-arrowrefresh-1-w" title="重排"></span></li>');
+                source.remove();
+            }*/
+
     //分组之间的排序
     $("#groupContainer").sortable({
-      opacity: 0.5,
-      items: ".target-group:not(.sort-disabled)",
-      handle: ".target-group-title"
+        opacity: 0.5,
+        items: ".target-group:not(.sort-disabled)",
+        handle: ".target-group-title"
     }).disableSelection();
 
     //分组内排序
@@ -179,18 +185,18 @@
         opacity: 0.5,
         placeholder: "ui-state-highlight",
         connectWith: ".target-group-item",
-        receive:function(event, ui){
+        receive: function(event, ui) {
             //新加入
-            console.log("新加入"+ui.item.html());
-            if(!ui.item.parent().hasClass("group-item-disabled") && ui.item.find(".ui-icon-arrowrefresh-1-w").length == 0){
+            console.log("新加入" + ui.item.html());
+            if (!ui.item.parent().hasClass("group-item-disabled") && ui.item.find(".ui-icon-arrowrefresh-1-w").length == 0) {
                 ui.item.append('<span class="ui-icon ui-icon-arrowrefresh-1-w" title="重排"></span>');
-            }else if(ui.item.parent().hasClass("group-item-disabled")){
+            } else if (ui.item.parent().hasClass("group-item-disabled")) {
                 ui.item.find(".ui-icon-arrowrefresh-1-w").remove();
             }
         },
-        remove:function(event, ui){
+        remove: function(event, ui) {
             //被拖出
-            console.log("被拖出"+ui.item.html());
+            console.log("被拖出" + ui.item.html());
         }
     }).disableSelection();
 
@@ -200,11 +206,11 @@
     });*/
 
     /*撤销*/
-     $("#groupContainer").on("click",".ui-icon-arrowrefresh-1-w",function(){
-       var parent =$(this).parent();
+    $("#groupContainer").on("click", ".ui-icon-arrowrefresh-1-w", function() {
+        var parent = $(this).parent();
         this.remove();
         parent.appendTo($("#dragsource"));
-       //parent.remove();
+        //parent.remove();
     });
     </script>
 </body>
